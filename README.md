@@ -75,6 +75,11 @@ In #10 a heavy-duty vehicle can be seen in the background, characterized by its 
 
 
 Main recurring features: windshields and windows (e.g. img #2, #3, #7, #9), mirrors (e.g. #2, #7), wheels (e.g. #3, #4, #9, #10 ), bumpers (e.g. #6, #10)
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185809491-0eac32fe-4649-40bd-b184-6928ade651e4.png" width=800 ></p><p align = "center">
+Range image
+</p>
+
 
 ## Detection performances
 Finally here it is reported the final evaluation of precision and recall over the whole considered dataset (ID_S4_EX3)
