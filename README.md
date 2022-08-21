@@ -29,9 +29,9 @@ img #3
 In #3 these cars are located on the left side of the ego vehicle but really close to it, so they are easily distinguishable. 
 
 
-<p float="center">
-  <img src="https://user-images.githubusercontent.com/74416077/185808636-79f3a0d6-2f27-4f93-ab00-5ffd76c5239e.png" height="200" />
-  <img src="https://user-images.githubusercontent.com/74416077/185808659-14d8656f-2b31-4a7f-b5ab-a7d0a3254cd4.png" height="200" />
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/74416077/185808636-79f3a0d6-2f27-4f93-ab00-5ffd76c5239e.png" height="250" />
+  <img src="https://user-images.githubusercontent.com/74416077/185808659-14d8656f-2b31-4a7f-b5ab-a7d0a3254cd4.png" height="250" />
 </p>
 <p align = "center">
 img #4 and #5
