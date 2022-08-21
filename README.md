@@ -41,10 +41,22 @@ img #7
 </p>
 #7 enclose a very detailed representation of vehicles that follow the Waymo one in traffic. 
 
-In 13 we have cars that preceed the ego vehicle, also at a great distance, cases in which visibility degrades significantly  
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808762-2e8da824-9562-460b-83b5-775a91e9e184.png" width=200 ></p><p align = "center">
+img #8
+</p>
+In #8 we have cars that preceed the ego vehicle, also at a great distance, cases in which visibility degrades significantly  
 
-In 14 another distant car is seen sideways but still recognizable
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808778-f706b952-4a7d-4b01-a8e7-7e6c407b3c7e.png" width=200 ></p><p align = "center">
+img #9
+</p>
+In #9 another distant car is seen sideways but still recognizable
 
-In 16 a heavy-duty vehicle can be seen in the background, characterized by its rear bumper and wheels.
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808797-1688aa8e-2d1a-443b-afa1-ea6fde5c636e.png" width=200 ></p><p align = "center">
+img #10
+</p>
+In #10 a heavy-duty vehicle can be seen in the background, characterized by its rear bumper and wheels.
 
-Main recurring features: windshields and windows (e.g. img #2, #3, #7, #14), mirrors (e.g. #2, #7), wheels (e.g. #3, #4, #14, #16 ), bumpers (e.g. #6, #16)
+Main recurring features: windshields and windows (e.g. img #2, #3, #7, #9), mirrors (e.g. #2, #7), wheels (e.g. #3, #4, #9, #10 ), bumpers (e.g. #6, #10)
