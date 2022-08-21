@@ -5,7 +5,7 @@ In this write-up we analyze several examples of vehicles appearing in the point 
 
 general_point_cloud
 
-<img src="https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png"/>
+<img src="https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=20/>
 
 1 includes several cars positioned behind the ego vehicle: for this reason we can see a detailed front part with decreasing precision in their representation when increasing the distance.
 
