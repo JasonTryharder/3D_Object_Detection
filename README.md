@@ -8,6 +8,7 @@ In this write-up we analyze several examples of vehicles appearing in the point 
 Point cloud
 </p>
 
+## Visibility of vehicles in the point cloud
 <p align = "center">
   <img src = "https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=300 ></p><p align = "center">
 img #1
@@ -74,10 +75,10 @@ img #10
 In #10 a heavy-duty vehicle can be seen in the background, characterized by its rear bumper and wheels.
 
 
-Main recurring features: windshields and windows (e.g. img #2, #3, #7, #9), mirrors (e.g. #2, #7), wheels (e.g. #3, #4, #9, #10 ), bumpers (e.g. #6, #10)
+Main recurring features: windshields and windows (e.g. img #2, #3, #7, #9), mirrors (e.g. #2, #7), wheels (e.g. #3, #4, #9, #10 ), bumpers (e.g. #6, #10). Furthermore, looking at the range image, these features appear to be quiet evident, especially preeceding vehicles' mirrors as well as bumpers and windows, that looks visible thanks to the dark background. 
 <p align = "center">
   <img src = "https://user-images.githubusercontent.com/74416077/185809491-0eac32fe-4649-40bd-b184-6928ade651e4.png" width=800 ></p><p align = "center">
-Range image
+Range (up) and intensity image (down) stacked vertically
 </p>
 
 
