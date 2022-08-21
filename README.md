@@ -69,7 +69,7 @@ In #9 another distant car is seen sideways but still recognizable
 
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/185809764-d406f922-5c98-4457-a383-9cf0399c482c.png)" width=400 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185809764-d406f922-5c98-4457-a383-9cf0399c482c.png" width=400 ></p><p align = "center">
 img #10
 </p>
 In #10 a heavy-duty vehicle can be seen in the background, characterized by its rear bumper and wheels.
