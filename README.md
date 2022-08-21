@@ -80,6 +80,6 @@ Main recurring features: windshields and windows (e.g. img #2, #3, #7, #9), mirr
 Finally here it is reported the final evaluation of precision and recall over the whole considered dataset (ID_S4_EX3)
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/185809260-60717e07-eaf6-4f14-9dec-8b2986764ea4.png" width=400 ></p><p align = "center">
-img #10
+  <img src = "https://user-images.githubusercontent.com/74416077/185809260-60717e07-eaf6-4f14-9dec-8b2986764ea4.png" width=800 ></p><p align = "center">
+Precision, recall and errors
 </p>
