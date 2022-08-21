@@ -5,10 +5,16 @@ In this write-up we analyze several examples of vehicles appearing in the point 
 
 general_point_cloud
 
-<img src="https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=200/>
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=200 ></p><p align = "center">
+img #1
+</p>
 
-1 includes several cars positioned behind the ego vehicle: for this reason we can see a detailed front part with decreasing precision in their representation when increasing the distance.
+<!--<img src="https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=200 alt=/>-->
 
+img #1 includes several cars positioned behind the ego vehicle: for this reason we can see a detailed front part with decreasing precision in their representation when increasing the distance.
+
+<img src="https://user-images.githubusercontent.com/74416077/185808463-0822ae74-96c1-4b7b-bf3f-a6d94d1cef94.png" width=200 alt="img #1"/>
 In 3 mirrors are visible although the low level of visibility given the far position of the object.
 
 In 6 these cars are located on the left side of the ego vehicle but really close to it, so they are easily distinguishable. 
