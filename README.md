@@ -23,6 +23,12 @@ img #3
 </p>
 In 3 these cars are located on the left side of the ego vehicle but really close to it, so they are easily distinguishable. 
 
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808636-79f3a0d6-2f27-4f93-ab00-5ffd76c5239e.png" width=200 ><img src = "https://user-images.githubusercontent.com/74416077/185808659-14d8656f-2b31-4a7f-b5ab-a7d0a3254cd4.png" width=200 ></p><p align = "center">
+img #4 and #5
+</p>
+
+
 8 and 9 represent vehicles perceived on the background, main features are appreciable also in this case.
 
 In 10 we can see several vehicles parked on the side of the road. Again, being very close to the sensor, all their feature are perceived and accurately represented in the point cloud.  
@@ -35,4 +41,4 @@ In 14 another distant car is seen sideways but still recognizable
 
 In 16 a heavy-duty vehicle can be seen in the background, characterized by its rear bumper and wheels.
 
-Main recurring features: windshields and windows (e.g. img #2, #3, #11, #14), mirrors (e.g. #2, #11), wheels (e.g. #3, #8, #14, #16 ), bumpers (e.g. #10, #16)
+Main recurring features: windshields and windows (e.g. img #2, #3, #11, #14), mirrors (e.g. #2, #11), wheels (e.g. #3, #4, #14, #16 ), bumpers (e.g. #10, #16)
