@@ -4,7 +4,7 @@ Objects detection in 3D point clouds given by measurements from LiDAR and camera
 In this write-up we analyze several examples of vehicles appearing in the point cloud returned by LiDAR sensor onboard the Waymo vehicle. 
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/185809003-1352eca5-9052-4c07-bbc2-bd6b9ff181a3.png" width=600 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185809003-1352eca5-9052-4c07-bbc2-bd6b9ff181a3.png" width=800 ></p><p align = "center">
 Point cloud
 </p>
 
@@ -16,21 +16,24 @@ In image #1 includes several cars positioned behind the ego vehicle: for this re
 
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/185808463-0822ae74-96c1-4b7b-bf3f-a6d94d1cef94.png" width=200 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808463-0822ae74-96c1-4b7b-bf3f-a6d94d1cef94.png" width=300 ></p><p align = "center">
 img #2
 </p>
 In #2 mirrors are visible although the low level of visibility given the far position of the object.
 
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/185808577-c23afce6-c9d7-4718-92e5-7afe5508d13a.png" width=200 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808577-c23afce6-c9d7-4718-92e5-7afe5508d13a.png" width=400 ></p><p align = "center">
 img #3
 </p>
 In #3 these cars are located on the left side of the ego vehicle but really close to it, so they are easily distinguishable. 
 
-</br>
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/74416077/185808636-79f3a0d6-2f27-4f93-ab00-5ffd76c5239e.png" height="200" />
+  <img src="https://user-images.githubusercontent.com/74416077/185808659-14d8656f-2b31-4a7f-b5ab-a7d0a3254cd4.png" height="200" />
+</p>
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/185808636-79f3a0d6-2f27-4f93-ab00-5ffd76c5239e.png" height=200 margin=10><img src = "https://user-images.githubusercontent.com/74416077/185808659-14d8656f-2b31-4a7f-b5ab-a7d0a3254cd4.png" height=200 margin=10></p><p align = "center">
 img #4 and #5
 </p>
 #4 and #5 represent vehicles perceived on the background, main features like wheels and windows are appreciable also in this case.
