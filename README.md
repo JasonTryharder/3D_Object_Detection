@@ -9,9 +9,6 @@ general_point_cloud
   <img src = "https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=200 ></p><p align = "center">
 img #1
 </p>
-
-<!--<img src="https://user-images.githubusercontent.com/74416077/185808403-6d3488d1-38ea-4c12-bce2-b629f9e29476.png" width=200 alt=/>-->
-
 img #1 includes several cars positioned behind the ego vehicle: for this reason we can see a detailed front part with decreasing precision in their representation when increasing the distance.
 
 <p align = "center">
@@ -20,7 +17,11 @@ img #2
 </p>
 In 2 mirrors are visible although the low level of visibility given the far position of the object.
 
-In 6 these cars are located on the left side of the ego vehicle but really close to it, so they are easily distinguishable. 
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/185808577-c23afce6-c9d7-4718-92e5-7afe5508d13a.png" width=200 ></p><p align = "center">
+img #3
+</p>
+In 3 these cars are located on the left side of the ego vehicle but really close to it, so they are easily distinguishable. 
 
 8 and 9 represent vehicles perceived on the background, main features are appreciable also in this case.
 
@@ -34,4 +35,4 @@ In 14 another distant car is seen sideways but still recognizable
 
 In 16 a heavy-duty vehicle can be seen in the background, characterized by its rear bumper and wheels.
 
-Main recurring features: windshields and windows (e.g. img #2, #6, #11, #14), mirrors (e.g. #2, #11), wheels (e.g. #6, #8, #14, #16 ), bumpers (e.g. #10, #16)
+Main recurring features: windshields and windows (e.g. img #2, #3, #11, #14), mirrors (e.g. #2, #11), wheels (e.g. #3, #8, #14, #16 ), bumpers (e.g. #10, #16)
