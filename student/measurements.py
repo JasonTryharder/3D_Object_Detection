@@ -155,8 +155,8 @@ class Measurement:
             # TODO Step 4: initialize camera measurement including z and R 
             ############
             self.z = np.zeros((sensor.dim_meas,1)) 
-            self.z[0] = z[0]
-            self.z[1] = z[1]
+            self.z[0][0] = z[0]
+            self.z[1][0] = z[1]
             self.R = np.matrix([[params.sigma_cam_i**2, 0],
                                 [0, params.sigma_cam_j**2]])
         
