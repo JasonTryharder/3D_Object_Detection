@@ -74,8 +74,6 @@ class Filter:
     def gamma(self, track, meas):
         # Step 1.5: calculate and return residual gamma
         H = meas.sensor.get_H(track.x)
-        
-        #z = meas.sensor.get_hx(track.x) # measurement function evaluated at the current state
         return (meas.z - H * track.x) # residual
 
     def S(self, track, meas, H):

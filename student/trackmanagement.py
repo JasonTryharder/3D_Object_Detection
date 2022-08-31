@@ -35,7 +35,7 @@ class Track:
         pos_sens = np.ones((4, 1)) # homogeneous coordinates
         pos_sens[0:3] = meas.z[0:3] 
         pos_veh = meas.sensor.sens_to_veh * pos_sens
-        self.x = np.zeros((6,1))
+        self.x = np.asmatrix(np.zeros((6,1)))
         self.x[0:3] = pos_veh[0:3]
 
         P_pos = M_rot * meas.R * np.transpose(M_rot)
@@ -44,7 +44,7 @@ class Track:
                         [0, params.sigma_p55**2, 0],
                         [0, 0, params.sigma_p66**2]])
         # overall covariance initialization
-        self.P = np.matrix(np.zeros((6, 6)))
+        self.P = np.asmatrix(np.zeros((6, 6)))
         self.P[0:3, 0:3] = P_pos
         self.P[3:6, 3:6] = P_vel
 
@@ -100,10 +100,12 @@ class Trackmanagement:
             if meas_list: # if not empty
                 if meas_list[0].sensor.in_fov(track.x):
                     track.score -= 0.05
-            # delete old tracks (due the low track score or x,y values above threshold in track.P)
+                    
+        # delete old tracks (due the low track score or x,y values above threshold in track.P)
+        for track in self.track_list:
             if track.score < 0.05 or (track.P[0,0] > params.max_P or track.P[1,1] > params.max_P):
                 self.delete_track(track)
-            
+        
         # initialize new track with unassigned measurement
         for j in unassigned_meas: 
             if meas_list[j].sensor.name == 'lidar': # only initialize with lidar measurements

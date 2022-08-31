@@ -43,16 +43,19 @@ class Sensor:
     
     def in_fov(self, x):
         # check if an object x can be seen by this sensor
-        ############
-        # TODO Step 4: implement a function that returns True if x lies in the sensor's field of view, 
+        # Step 4: implement a function that returns True if x lies in the sensor's field of view, 
         # otherwise False.
-        ############
-
-        return True
+        if x[0] > 0: 
+            obj_pos = np.ones((4,1)) # Prepare homog coord for reprojection
+            obj_pos[0:3] = x[0:3]
+            x_v = self.veh_to_sens * obj_pos # transofrom from vehicle to sensor
+            x_v = x_v[0:2]
+            angle = np.abs(float(np.arctan2(x_v[1], x_v[0]) * 180 / np.pi))
+            fov_threshold = self.fov[1] * 180 / np.pi
+            if angle < fov_threshold:
+                return True
         
-        ############
-        # END student code
-        ############ 
+        return False
              
     def get_hx(self, x):    
         # calculate nonlinear measurement expectation value h(x)   
@@ -63,19 +66,24 @@ class Sensor:
             return pos_sens[0:3]
         elif self.name == 'camera':
             
-            ############
-            # TODO Step 4: implement nonlinear camera measurement function h:
+            # Step 4: implement nonlinear camera measurement function h:
             # - transform position estimate from vehicle to camera coordinates
             # - project from camera to image coordinates
             # - make sure to not divide by zero, raise an error if needed
             # - return h(x)
-            ############
 
-            pass
-        
-            ############
-            # END student code
-            ############ 
+            pos_veh = np.ones((4, 1)) # homogeneous coordinates
+            pos_veh[0:3, 0] = x[0:3] 
+            pos_sens = self.veh_to_sens*pos_veh 
+            pos_sens = pos_sens[0:3]
+            hx = np.zeros((2,1))
+            # check and print error message if dividing by zero
+            if pos_sens[0]==0:
+                raise NameError('Jacobian not defined for x[0]=0!')
+            else:
+                hx[0] = self.c_i - self.f_i * pos_sens[1] / pos_sens[0] # project to image coordinates
+                hx[1] = self.c_j - self.f_j * pos_sens[2] / pos_sens[0]
+                return hx
         
     def get_H(self, x):
         # calculate Jacobian H at current x from h(x)
@@ -111,18 +119,10 @@ class Sensor:
         
     def generate_measurement(self, num_frame, z, meas_list):
         # generate new measurement from this sensor and add to measurement list
-        ############
-        # TODO Step 4: remove restriction to lidar in order to include camera as well
-        ############
-        
-        if self.name == 'lidar':
-            meas = Measurement(num_frame, z, self)
-            meas_list.append(meas)
+        # Step 4: remove restriction to lidar in order to include camera as well
+        meas = Measurement(num_frame, z, self)
+        meas_list.append(meas)
         return meas_list
-        
-        ############
-        # END student code
-        ############ 
         
         
 ################### 
@@ -151,12 +151,14 @@ class Measurement:
             self.height = z[3]
             self.yaw = z[6]
         elif sensor.name == 'camera':
-            
             ############
             # TODO Step 4: initialize camera measurement including z and R 
             ############
-
-            pass
+            self.z = np.zeros((sensor.dim_meas,1)) 
+            self.z[0] = z[0]
+            self.z[1] = z[1]
+            self.R = np.matrix([[params.sigma_cam_i**2, 0],
+                                [0, params.sigma_cam_j**2]])
         
             ############
             # END student code
