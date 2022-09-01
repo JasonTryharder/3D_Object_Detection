@@ -36,14 +36,24 @@ class Association:
         # - update list of unassigned measurements and unassigned tracks
         N = len(track_list) # N tracks
         M = len(meas_list) # M measurements
-        self.association_matrix = np.inf*np.ones((N,M)) 
+
+        self.association_matrix = np.matrix([])  # reset matrix
+        self.unassigned_tracks = []  # reset lists
+        self.unassigned_meas = []
+
+        if len(meas_list) > 0:
+            self.unassigned_meas = list(range(M)) # [*range(M)] same as list(range(M)), ok from Python 3.5 
+        if len(track_list) > 0:
+            self.unassigned_tracks = list(range(N)) # [*range(N)] same as list(range(N)), ok from Python 3.5 
+        if len(meas_list) > 0 and len(track_list) > 0:
+            self.association_matrix = np.asmatrix(np.inf * np.ones((N, M)))
+
         # fill association matrix with Mahalanobis distances between all tracks and all measurements
         for i in range(N):
             for j in range(M):
-                self.association_matrix[i,j] = self.MHD(track_list[i], meas_list[j], KF)
-
-        self.unassigned_tracks = [*range(N)] # same as list(range(N)), ok from Python 3.5 
-        self.unassigned_meas = [*range(M)] # same as list(range(M)), ok from Python 3.5 
+                dist = self.MHD(track_list[i], meas_list[j], KF)
+                if self.gating(dist, meas_list[j].sensor):
+                    self.association_matrix[i,j] = dist
                 
     def get_closest_track_and_meas(self):
         # Step 3: find closest track and measurement:
