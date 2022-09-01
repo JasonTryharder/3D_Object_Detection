@@ -2,9 +2,9 @@
 Objects detection in 3D point clouds given by measurements from LiDAR and camera from the Waymo Open Dataset
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/74416077/187894624-c8d68ef3-7177-4478-aa57-2b6371975d1c.png" width=800 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/187908854-df1ae58d-2185-4acd-9963-0c0c0c4fad81.gif" width=800 ></p><p align = "center">
 </p>
-
+<!-- https://user-images.githubusercontent.com/74416077/187894624-c8d68ef3-7177-4478-aa57-2b6371975d1c.png" -->
 
 ## How to run
 This project uses [Waymo Open Dataset](https://waymo.com/open/terms) bucket that can be downloaded from this [page](https://console.cloud.google.com/storage/browser/waymo_open_dataset_v_1_2_0_individual_files;tab=objects?prefix=&forceOnObjectsSortingFiltering=false). In this case specifically, the needed sequences are listed in the following: 
