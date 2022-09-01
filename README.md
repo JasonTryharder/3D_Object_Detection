@@ -108,8 +108,7 @@ Finally, considering extreme cases, the redundancy introduced with both sensors 
 
 
 
-
-In this write-up we analyze several examples of vehicles appearing in the point cloud returned by LiDAR sensor onboard the Waymo vehicle. 
+<!--In this write-up we analyze several examples of vehicles appearing in the point cloud returned by LiDAR sensor onboard the Waymo vehicle. 
 
 <p align = "center">
   <img src = "https://user-images.githubusercontent.com/74416077/185809003-1352eca5-9052-4c07-bbc2-bd6b9ff181a3.png" width=800 ></p><p align = "center">
@@ -197,3 +196,4 @@ Finally here it is reported the final evaluation of precision and recall over th
   <img src = "https://user-images.githubusercontent.com/74416077/185809260-60717e07-eaf6-4f14-9dec-8b2986764ea4.png" width=800 ></p><p align = "center">
 Precision, recall and errors
 </p>
+-->
