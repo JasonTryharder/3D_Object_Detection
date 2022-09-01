@@ -1,6 +1,110 @@
 # 3D_Object_Detection
 Objects detection in 3D point clouds given by measurements from LiDAR and camera from the Waymo Open Dataset
 
+
+## How to run
+This project uses [Waymo Open Dataset](https://waymo.com/open/terms) bucket that can be downloaded from this [page](https://console.cloud.google.com/storage/browser/waymo_open_dataset_v_1_2_0_individual_files;tab=objects?prefix=&forceOnObjectsSortingFiltering=false). In this case specifically, the needed sequences are listed in the following: 
+
+`training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord` <br>
+`training_segment-10072231702153043603_5725_000_5745_000_with_camera_labels.tfrecord` <br>
+`training_segment-10963653239323173269_1924_000_1944_000_with_camera_labels.tfrecord` <br>
+
+Once downloaded, each of them has to appear in `dataset` folder.
+You can download from [here](https://drive.google.com/drive/folders/1IkqFGYTF6Fh_d8J3UjQOSNJ2V42UDZpO?usp=sharing) pre-computed lidar detections in order to face the same data as input. These files have to be placed in the `results` folder.
+Download [resnet pretrained model](https://drive.google.com/file/d/1RcEfUIF1pzDZco8PJkZ10OL-wLL2usEj/view?usp=sharing) and store it in the `tools/objdet_models/resnet/pretrained` folder. [Darknet pretrained model](https://drive.google.com/file/d/1Pqx7sShlqKSGmvshTYbNDcUEYyZwfn3A/view?usp=sharing) is instead available here. 
+
+
+## Step 1 - EKF
+First of all, in `filter.py` you can find an implementation of an Extended Kalman Filter (EKF) used to track single targets using real-world lidar data. Definition of matrix F, Q for the problem as well as prediction and update functions have been implemented. Here is reported the Root Mean Square Error (RMSE) related to this execution.
+<p align = "center">
+  <img src = "RMSE_final_project.png" width=800 ></p><p align = "center">
+</p>
+
+### Setup
+Choose second sequence in `loop_over_dataset.py`, uncommenting the corresponding line and commenting the remaining two
+```python
+data_filename = training_segment-10072231702153043603_5725_000_5745_000_with_camera_labels.tfrecord
+```
+Assign frames number to consider
+```python
+show_only_frames = [150, 200]
+```
+Make sure to select resnet model
+```python 
+configs_det = det.load_configs(model_name='fpn_resnet')
+```
+Set this variable to define y-range limit
+```python
+configs_det.lim_y = [-5, 10]
+```
+And assign these vectors to activate tracking and visualization features
+```python 
+exec_detection = []
+exec_tracking = ['perform_tracking']
+exec_visualization = ['show_tracks']
+```
+
+## Step 2 - Track management
+Track management module stored in `student/trackmanagement.py` is needed to correctly perceive several vehicles simultaneously. In particular, here track initialization and deletion but also track state and score update have been implemented. Here attached the corresponding RMSE plot for this run.
+<p align = "center">
+  <img src = "RMSE_track_management.png" width=800 ></p><p align = "center">
+</p>
+
+### Setup
+Apply these modification in `loop_over_dataset.py`: limit the number of frames considered
+```python
+show_only_frames = [65, 100]
+```
+and modify the y-range limit
+```python 
+configs_det.lim_y = [-5, 15]
+```
+
+## Step 3 - Data association
+In order to support multi-target tracking the framework relies on a single nearest neighbor data association method, which source code is in `student/association.py`, able to couple each measurement to each track in a robust way. More specifically, in the `associate` function all Mahalanobis distances for all tracks and measurements combinations are calculated and association matrix entries are assigned, also considering gating technique to reduce complexity. In the following RMSE plot for multi-target tracking is included.
+<p align = "center">
+  <img src = "step3_plot.png" width=800 ></p><p align = "center">
+</p>
+
+### Setup 
+In `loop_over_dataset.py`, select sequence 1 (commenting the remaining ones) to consider a more complex scenario with multiple targets.
+```python
+data_filename = training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+```
+Then consider all frames available
+```python 
+show_only_frames = [0, 200]
+```
+and extend the y-range to the whole one
+```python 
+configs_det.lim_y = [-25, 25]
+```
+## Step 4 - Camera-lidar sensor fusion
+In this final part the sensor fusion module for camera-lidar fusion is completed. Actually, the camera measurement model is added in order to consider both source of information in `student/measurements.py`. 
+More precisely, nonlinear camera measurement function h(x) has been implemented, including measurement object initialization.
+However, please note that in less trivial real-world applications several data source have to be monitored by this module. Then, the final RMSE plot the three valid tracks.
+<p align = "center">
+  <img src = "step4_plot.png" width=800 ></p><p align = "center">
+</p>
+
+### Setup
+Same as step 3.
+
+## Benefits and challenges of camera-lidar fusion
+Of course there are theoretical and practical benefits in combining two different types of sensors in the perception layer of a self-driving vehicle.  
+In the specific case the double sensor setup seems not to introduce a better performance if compared to the lidar-only scenario, but surely in quite complex use case, with tens of vehicles around the ego one, a wider field of view and a more complete data flow, collected from different sources, is a great advantage and increases the situation awareness of the autonomous agent.
+
+Going into the wild expose the vehicle to various potentially crtitical scenarios related to weather conditions, specific kind of objects detected (e.g. plates, reflectors or any high responding material) in which one sensor, for example, could introduce some false positive measurements that could be compensated by the other one, whose precision is not affected in that scenario, through the centralized tracking management module (e.g. rapidly decreasing the track score).
+Finally, considering extreme cases, the redundancy introduced with both sensors increases the overall system fault tolerance, having a positive impact on its own robustness. 
+
+## Further improvement
+- Fine tuning of parameters included in `params.py` (e.g. standard deviations for measurements, thresholds for track states) to lower RMSE value  
+- Introduce a more complex data association algorithm like [Global Nearest Neighbor (GNN)](http://ecet.ecs.uni-ruse.bg/cst/docs/proceedings/S3/III-7.pdf) in step 3
+- Deploy a non-linear motion model (e.g. bicycle model), more suitable for vehicle, especially in urban context, instead of the linear motion model used here for highway scenarios.
+
+
+
+
 In this write-up we analyze several examples of vehicles appearing in the point cloud returned by LiDAR sensor onboard the Waymo vehicle. 
 
 <p align = "center">
