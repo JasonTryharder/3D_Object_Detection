@@ -1,6 +1,7 @@
 # 3D_Object_Detection
 Objects detection in 3D point clouds given by measurements from LiDAR and camera from the Waymo Open Dataset
 
+https://user-images.githubusercontent.com/74416077/187894624-c8d68ef3-7177-4478-aa57-2b6371975d1c.png
 
 ## How to run
 This project uses [Waymo Open Dataset](https://waymo.com/open/terms) bucket that can be downloaded from this [page](https://console.cloud.google.com/storage/browser/waymo_open_dataset_v_1_2_0_individual_files;tab=objects?prefix=&forceOnObjectsSortingFiltering=false). In this case specifically, the needed sequences are listed in the following: 
@@ -17,7 +18,7 @@ Download [resnet pretrained model](https://drive.google.com/file/d/1RcEfUIF1pzDZ
 ## Step 1 - EKF
 First of all, in `filter.py` you can find an implementation of an Extended Kalman Filter (EKF) used to track single targets using real-world lidar data. Definition of matrix F, Q for the problem as well as prediction and update functions have been implemented. Here is reported the Root Mean Square Error (RMSE) related to this execution.
 <p align = "center">
-  <img src = "RMSE_final_project.png" width=800 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/187894689-516ff652-9502-4c4a-aeaa-b857f81a98a9.png" width=800 ></p><p align = "center">
 </p>
 
 ### Setup
@@ -47,7 +48,7 @@ exec_visualization = ['show_tracks']
 ## Step 2 - Track management
 Track management module stored in `student/trackmanagement.py` is needed to correctly perceive several vehicles simultaneously. In particular, here track initialization and deletion but also track state and score update have been implemented. Here attached the corresponding RMSE plot for this run.
 <p align = "center">
-  <img src = "RMSE_track_management.png" width=800 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/187894702-bbaa18fd-b076-440c-b735-89932132ecbb.png" width=800 ></p><p align = "center">
 </p>
 
 ### Setup
@@ -63,7 +64,7 @@ configs_det.lim_y = [-5, 15]
 ## Step 3 - Data association
 In order to support multi-target tracking the framework relies on a single nearest neighbor data association method, which source code is in `student/association.py`, able to couple each measurement to each track in a robust way. More specifically, in the `associate` function all Mahalanobis distances for all tracks and measurements combinations are calculated and association matrix entries are assigned, also considering gating technique to reduce complexity. In the following RMSE plot for multi-target tracking is included.
 <p align = "center">
-  <img src = "step3_plot.png" width=800 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/187894713-1738627e-25c5-4681-9c1b-d1f2ff153827.png" width=800 ></p><p align = "center">
 </p>
 
 ### Setup 
@@ -84,7 +85,7 @@ In this final part the sensor fusion module for camera-lidar fusion is completed
 More precisely, nonlinear camera measurement function h(x) has been implemented, including measurement object initialization.
 However, please note that in less trivial real-world applications several data source have to be monitored by this module. Then, the final RMSE plot the three valid tracks.
 <p align = "center">
-  <img src = "step4_plot.png" width=800 ></p><p align = "center">
+  <img src = "https://user-images.githubusercontent.com/74416077/187894731-ab8f30c9-4047-47e0-b8be-deb7ce600e54.png" width=800 ></p><p align = "center">
 </p>
 
 ### Setup
